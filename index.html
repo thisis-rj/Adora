@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adora — A shower filter designed for Indian water</title>
+<meta name="description" content="Adora is a four-stage shower filter designed for Indian water. Less hardness, less iron — for healthier skin, smoother hair and a calmer you.">
+<meta name="theme-color" content="#eec3c0">
+
+<meta property="og:title" content="Adora — Water is step zero in beauty">
+<meta property="og:description" content="A shower filter designed for Indian water. For healthier skin, smoother hair, a calmer you.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/hero-showerhead.webp">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26' font-family='serif'>a</text></svg>">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+    <a class="wordmark" href="#top" aria-label="Adora, home">adora</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="#problem">The Indian Water Problem</a>
+      <a href="#technology">Our Technology</a>
+      <a href="#results">Real Results</a>
+      <a href="#faq">FAQs</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="btn btn--pill btn--light" href="#shop">Shop Now <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="cart" href="#cart" aria-label="Cart, 0 items">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 7h12l-1 13H7L6 7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M9.5 9.5V6.5a2.5 2.5 0 0 1 5 0v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="cart__count">(0)</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="top">
+    <div class="hero__media">
+      <img data-img-slot src="assets/images/hero-showerhead.webp"
+           alt="An Adora shower filter fitted to a showerhead, water falling in a soft pink bathroom light">
+    </div>
+
+    <div class="shell hero__inner">
+      <div class="hero__copy reveal">
+        <h1 class="display">Water<br>is step zero<br>in <em>beauty.</em></h1>
+        <p class="lede">
+          A shower filter designed for Indian water.<br>
+          For healthier skin, smoother hair,<br>
+          a calmer you.
+        </p>
+        <a class="btn btn--primary" href="#shop">Shop Adora <span class="arrow" aria-hidden="true">→</span></a>
+
+        <ul class="trust">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h11v8H3zM14 11h4l3 3v2h-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.6" fill="currentColor"/><circle cx="17" cy="18" r="1.6" fill="currentColor"/></svg>
+            Free shipping
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            30-day trial
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            Easy installation
+          </li>
+        </ul>
+      </div>
+
+      <p class="scribble hero__scribble" aria-hidden="true">Because what touches you matters</p>
+    </div>
+  </section>
+
+  <!-- ==================== 01 · YOUR WATER REPORT ==================== -->
+  <section class="section section--report" id="report">
+    <div class="shell grid-split">
+      <div class="col-copy reveal">
+        <p class="eyebrow"><span class="eyebrow__num">01</span> Your water report</p>
+        <h2 class="display">Every home<br>has a different<br>water story.</h2>
+        <p class="body">See what's in your water based on<br>your area's groundwater data.</p>
+
+        <form class="pincode" id="pincodeForm" novalidate>
+          <label class="sr-only" for="pincode">Six-digit pincode</label>
+          <!-- No maxlength: it would truncate a pasted "560 068" before
+               main.js strips the non-digits. The cap lives in the handler. -->
+          <input id="pincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code"
+                 placeholder="Enter your pincode"
+                 aria-describedby="pincodeHelp">
+          <button type="submit" aria-label="Check my water">
+            <span class="arrow" aria-hidden="true">→</span>
+          </button>
+        </form>
+        <p class="fineprint" id="pincodeHelp">Six digits — we read your area's groundwater parameters.</p>
+        <p class="form-error" id="pincodeError" role="alert" hidden></p>
+      </div>
+
+      <div class="col-media reveal">
+        <div class="media media--report">
+          <img data-img-slot src="assets/images/water-report-sphere.webp"
+               alt="A sphere of water holding suspended mineral particles" loading="lazy">
+        </div>
+
+        <figure class="report-card" id="reportCard">
+          <header class="report-card__top">
+            <h3>Your Water Report</h3>
+            <span class="report-card__src">Source: CGWB 2023</span>
+          </header>
+
+          <p class="report-card__place">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10.5" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            <span id="reportPlace">Bangalore, 560068</span>
+          </p>
+
+          <ul class="metrics" id="reportMetrics">
+            <li><b data-metric="hardness">412</b><span class="unit">mg/L</span><span class="label">Total Hardness</span><span class="level level--high" data-level="hardness">(High)</span></li>
+            <li><b data-metric="iron">0.72</b><span class="unit">mg/L</span><span class="label">Iron</span><span class="level level--high" data-level="iron">(High)</span></li>
+            <li><b data-metric="chlorine">0.31</b><span class="unit">mg/L</span><span class="label">Chlorine</span><span class="level level--med" data-level="chlorine">(Medium)</span></li>
+            <li><b data-metric="tds">180</b><span class="unit">mg/L</span><span class="label">TDS</span><span class="level level--med" data-level="tds">(Medium)</span></li>
+          </ul>
+
+          <figcaption class="report-card__note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 11v5.5M12 7.6v.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span>These are typical ranges for your area. Exact values may vary.<br>Adora is designed for Indian water conditions.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 02 · THE INVISIBLE TRUTH ==================== -->
+  <section class="section section--truth" id="problem">
+    <div class="shell grid-split">
+      <div class="col-copy reveal">
+        <p class="eyebrow"><span class="eyebrow__num">02</span> The invisible truth</p>
+        <h2 class="display">Your water<br>looks clear.<br>But it isn't.</h2>
+        <p class="body">
+          Indian water has high levels of hardness,<br>
+          iron and other minerals that can affect<br>
+          your skin, hair and overall wellbeing.
+        </p>
+        <a class="btn btn--ghost" href="#technology">Learn more <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="col-media reveal">
+        <p class="scribble truth__scribble" aria-hidden="true">Small particles<br>Big impact</p>
+
+        <ul class="particles">
+          <li class="particle particle--lg">
+            <div class="media"><img data-img-slot src="assets/images/particle-iron.webp" alt="A cluster of rust-coloured iron particles" loading="lazy"></div>
+            <p class="particle__label">Iron</p>
+          </li>
+          <li class="particle">
+            <div class="media"><img data-img-slot src="assets/images/particle-hardness.webp" alt="Translucent crystals of calcium and magnesium" loading="lazy"></div>
+            <p class="particle__label">Hardness<br><small>(Calcium &amp; Magnesium)</small></p>
+          </li>
+          <li class="particle">
+            <div class="media"><img data-img-slot src="assets/images/particle-sediment.webp" alt="Dark grains of sediment" loading="lazy"></div>
+            <p class="particle__label">Sediment</p>
+          </li>
+          <li class="particle">
+            <div class="media"><img data-img-slot src="assets/images/particle-other.webp" alt="Fine pink microscopic impurities" loading="lazy"></div>
+            <p class="particle__label">Other impurities</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 03 · OUR TECHNOLOGY ==================== -->
+  <section class="section section--tech" id="technology">
+    <div class="shell grid-split">
+      <div class="col-copy reveal">
+        <p class="eyebrow"><span class="eyebrow__num">03</span> Our technology</p>
+        <h2 class="display">Four stages.<br>Nothing for show.</h2>
+        <p class="body">
+          A filtration system designed<br>
+          specifically for Indian water — targeting<br>
+          hardness and iron, in the right order.
+        </p>
+        <a class="btn btn--ghost btn--solid" href="#shop">See how it works</a>
+      </div>
+
+      <div class="col-media reveal">
+        <div class="media media--tech">
+          <img data-img-slot src="assets/images/technology-stages.webp"
+               alt="The Adora filter shown exploded into its four media stages" loading="lazy">
+        </div>
+
+        <ol class="stages">
+          <li><span class="stages__num">01</span><b>Sediment</b><span>Traps larger particles</span></li>
+          <li><span class="stages__num">02</span><b>KDF-85</b><span>Targets iron</span></li>
+          <li><span class="stages__num">03</span><b>Polyphosphate</b><span>Inactivates hardness minerals</span></li>
+          <li><span class="stages__num">04</span><b>Sediment</b><span>Catches even finer particles</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 04 · REAL RESULTS ==================== -->
+  <section class="section section--results" id="results">
+    <div class="results__grid">
+      <div class="results__copy reveal">
+        <p class="eyebrow"><span class="eyebrow__num">04</span> Real results</p>
+        <h2 class="display">The difference<br>you can feel.</h2>
+        <p class="body">
+          Less buildup. Smoother, shinier hair.<br>
+          Healthier, calmer skin.
+        </p>
+
+        <div class="tabs" role="tablist" aria-label="Results by area">
+          <button role="tab" id="tab-hair" aria-controls="panel-hair" aria-selected="true" class="is-active">Hair</button>
+          <button role="tab" id="tab-skin" aria-controls="panel-skin" aria-selected="false">Skin</button>
+          <button role="tab" id="tab-shower" aria-controls="panel-shower" aria-selected="false">Shower</button>
+        </div>
+
+        <div class="stats" id="statsPanel" role="tabpanel" aria-labelledby="tab-hair">
+          <!-- rows are rendered by main.js from RESULTS_DATA -->
+        </div>
+
+        <p class="fineprint">Self-reported results from a 90-day user panel.</p>
+      </div>
+
+      <div class="compare" id="compare">
+        <div class="compare__layer compare__layer--before">
+          <img data-img-slot src="assets/images/results-hair-before.webp" alt="Hair before using Adora — dull and rough" loading="lazy">
+          <div class="compare__tag">
+            <b>Before</b>
+            <span>Dull, rough, prone<br>to breakage.</span>
+          </div>
+        </div>
+
+        <div class="compare__layer compare__layer--after" id="compareAfter">
+          <img data-img-slot src="assets/images/results-hair-after.webp" alt="Hair after using Adora — smooth and glossy" loading="lazy">
+          <div class="compare__tag compare__tag--right">
+            <b>After</b>
+            <span>Smoother, cleaner,<br>healthier.</span>
+          </div>
+        </div>
+
+        <button class="compare__handle" id="compareHandle"
+                role="slider" aria-label="Compare before and after"
+                aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-orientation="horizontal">
+          <span aria-hidden="true">‹ ›</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 05 · REAL PEOPLE ==================== -->
+  <section class="section section--voices" id="voices">
+    <div class="shell">
+      <div class="voices__head">
+        <p class="eyebrow"><span class="eyebrow__num">05</span> Real people, real results</p>
+        <div class="carousel-nav">
+          <button id="voicePrev" aria-label="Previous testimonials">‹</button>
+          <button id="voiceNext" aria-label="Next testimonials">›</button>
+        </div>
+      </div>
+
+      <div class="voices__grid">
+        <figure class="quote" id="quoteA" aria-live="polite">
+          <blockquote>“The cartridge came out orange at day ninety. That was the argument.”</blockquote>
+          <figcaption>
+            <span class="avatar"><img data-img-slot src="assets/images/avatar-nikhil.webp" alt="" loading="lazy"></span>
+            <span><b>Nikhil S.</b><small>Verified customer</small></span>
+          </figcaption>
+        </figure>
+
+        <div class="cartridges">
+          <div class="cartridge">
+            <div class="media"><img data-img-slot src="assets/images/cartridge-day-0.webp" alt="A clean white filter cartridge on day zero" loading="lazy"></div>
+            <p>Day 0</p>
+          </div>
+          <div class="cartridge">
+            <div class="media"><img data-img-slot src="assets/images/cartridge-day-90.webp" alt="The same cartridge stained orange after ninety days" loading="lazy"></div>
+            <p>Day 90</p>
+          </div>
+        </div>
+
+        <figure class="quote quote--right" id="quoteB" aria-live="polite">
+          <blockquote>“My hair feels softer, my skin is less dry, and my showers just feel better.”</blockquote>
+          <figcaption>
+            <span class="avatar"><img data-img-slot src="assets/images/avatar-aditi.webp" alt="" loading="lazy"></span>
+            <span><b>Aditi R.</b><small>Verified customer</small></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FAQ ============================ -->
+  <section class="section section--faq" id="faq">
+    <div class="shell faq__inner">
+      <div class="reveal">
+        <p class="eyebrow"><span class="eyebrow__num">06</span> Good questions</p>
+        <h2 class="display">Before you<br>ask us.</h2>
+      </div>
+
+      <div class="faq__list reveal">
+        <details>
+          <summary>Will it fit my shower?<span class="faq__sign" aria-hidden="true"></span></summary>
+          <p>Adora threads onto any standard half-inch shower arm — the fitting used in most Indian bathrooms. No plumber, no tools beyond your hands.</p>
+        </details>
+        <details>
+          <summary>How often do I replace the cartridge?<span class="faq__sign" aria-hidden="true"></span></summary>
+          <p>Every 90 days, or sooner if your water is especially hard. The cartridge colours as it works, so you can see when it is spent.</p>
+        </details>
+        <details>
+          <summary>Does it reduce water pressure?<span class="faq__sign" aria-hidden="true"></span></summary>
+          <p>No. The four stages are sized so flow stays the same as your existing showerhead.</p>
+        </details>
+        <details>
+          <summary>Does it soften water?<span class="faq__sign" aria-hidden="true"></span></summary>
+          <p>It inactivates hardness minerals so they stop binding to your skin and hair. That is different from an ion-exchange softener, which swaps minerals for salt and needs a tank.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA ============================ -->
+  <section class="cta" id="shop">
+    <div class="cta__media">
+      <img data-img-slot src="assets/images/cta-portrait.webp"
+           alt="A woman standing under a shower, water on her skin" loading="lazy">
+    </div>
+    <div class="cta__panel">
+      <div class="cta__copy reveal">
+        <h2 class="display">Better water<br>for brighter days.</h2>
+        <a class="btn btn--primary" href="#shop">Shop Adora <span class="arrow" aria-hidden="true">→</span></a>
+        <p class="scribble cta__scribble" aria-hidden="true">Not just a filter.<br>A kinder you.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <a class="wordmark" href="#top">adora</a>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#problem">Our Story</a>
+      <a href="#technology">Science</a>
+      <a href="#faq">FAQs</a>
+      <a href="#shop">Contact</a>
+    </nav>
+
+    <ul class="socials">
+      <li><a href="#" aria-label="Adora on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/></svg>
+      </a></li>
+      <li><a href="#" aria-label="Adora on TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v9.4a3.4 3.4 0 1 1-2.8-3.35" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M14 4c.4 2.2 1.9 3.5 4 3.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </a></li>
+      <li><a href="#" aria-label="Adora on YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 9.8l3.6 2.2-3.6 2.2V9.8Z" fill="currentColor"/></svg>
+      </a></li>
+    </ul>
+
+    <p class="site-footer__note">Made for Indian water. Made for you.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
