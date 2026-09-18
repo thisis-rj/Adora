@@ -34,8 +34,11 @@
   var nav = $("#siteNav");
   var navToggle = $("#navToggle");
 
+  // The header sits in the hero until the hero scrolls past, then pins.
   var onScroll = function () {
-    header.classList.toggle("is-stuck", window.scrollY > 40);
+    var hero = document.querySelector(".hero");
+    var past = hero ? hero.offsetHeight - header.offsetHeight : 120;
+    header.classList.toggle("is-fixed", window.scrollY > past);
   };
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -54,22 +57,10 @@
   });
 
   /* ------------------------------------------------------------------
-     Scroll reveals + current section in the nav
+     Current section in the nav
      ------------------------------------------------------------------ */
-  var revealables = $$(".reveal");
-
   if ("IntersectionObserver" in window) {
-    var revealer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealer.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
-
-    revealables.forEach(function (el) { revealer.observe(el); });
-
-    var navLinks = $$(".site-nav a");
+    var navLinks = $$(".site-nav a:not(.is-placeholder)");
     var watched = navLinks
       .map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); })
       .filter(Boolean);
@@ -84,8 +75,6 @@
     }, { rootMargin: "-45% 0px -50% 0px" });
 
     watched.forEach(function (el) { spy.observe(el); });
-  } else {
-    revealables.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
   /* ------------------------------------------------------------------
@@ -249,7 +238,7 @@
     setPosition(((e.clientX - rect.left) / rect.width) * 100);
   }
 
-  setPosition(50);
+  setPosition(45);
 
   handle.addEventListener("pointerdown", function (e) {
     dragging = true;
@@ -282,11 +271,12 @@
   /* ------------------------------------------------------------------
      05 · Testimonial carousel
      ------------------------------------------------------------------ */
+  // Each quote is pre-broken into lines, the way the design sets them.
   var TESTIMONIALS = [
-    { quote: "The cartridge came out orange at day ninety. That was the argument.", name: "Nikhil S.", avatar: "assets/images/avatar-nikhil.webp" },
-    { quote: "My hair feels softer, my skin is less dry, and my showers just feel better.", name: "Aditi R.", avatar: "assets/images/avatar-aditi.webp" },
-    { quote: "I stopped finding white scale on the tiles within a fortnight.", name: "Meera K.", avatar: "assets/images/avatar-meera.webp" },
-    { quote: "Bangalore water wrecked my hair for two years. This finally fixed it.", name: "Rohan D.", avatar: "assets/images/avatar-rohan.webp" }
+    { lines: ["The cartridge came", "out orange at day ninety.", "That was the argument."], name: "Nikhil S.", avatar: "assets/images/avatar-nikhil.webp" },
+    { lines: ["My hair feels softer,", "my skin is less dry, and my", "showers just feel better."], name: "Aditi R.", avatar: "assets/images/avatar-aditi.webp" },
+    { lines: ["I stopped finding white", "scale on the tiles within", "a fortnight."], name: "Meera K.", avatar: "assets/images/avatar-meera.webp" },
+    { lines: ["Bangalore water wrecked", "my hair for two years.", "This finally fixed it."], name: "Rohan D.", avatar: "assets/images/avatar-rohan.webp" }
   ];
 
   var quoteA = $("#quoteA");
@@ -294,7 +284,13 @@
   var voiceIndex = 0;
 
   function paintQuote(figure, item) {
-    figure.querySelector("blockquote").textContent = "“" + item.quote + "”";
+    var block = figure.querySelector("blockquote");
+    block.textContent = "";
+    item.lines.forEach(function (line, i) {
+      var text = (i === 0 ? "“" : "") + line + (i === item.lines.length - 1 ? "”" : "");
+      block.appendChild(document.createTextNode(text));
+      if (i < item.lines.length - 1) block.appendChild(document.createElement("br"));
+    });
     figure.querySelector("figcaption b").textContent = item.name;
 
     var img = figure.querySelector(".avatar img");

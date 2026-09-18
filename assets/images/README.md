@@ -15,8 +15,8 @@ waiting for, so the page never breaks while assets are still coming in.
 | `technology-stages.webp` | 03 · Our technology | Filter exploded into its four media stages | 2000 × 1000, transparent |
 | `results-hair-before.webp` | 04 · Real results | Hair before — dull, rough | 1400 × 1400 |
 | `results-hair-after.webp` | 04 | Hair after — smooth, glossy | 1400 × 1400 |
-| `cartridge-day-0.webp` | 05 · Real people | Clean white cartridge | 600 × 800, transparent |
-| `cartridge-day-90.webp` | 05 | Same cartridge stained orange | 600 × 800, transparent |
+| `cartridge-day-0.webp` | 05 · Real people | Clean white cartridge | 600 × 900, transparent |
+| `cartridge-day-90.webp` | 05 | Same cartridge stained orange | 600 × 900, transparent |
 | `avatar-nikhil.webp` | 05 | Customer portrait | 160 × 160 square |
 | `avatar-aditi.webp` | 05 | Customer portrait | 160 × 160 square |
 | `avatar-meera.webp` | 05 | Customer portrait (carousel slide 3) | 160 × 160 square |
@@ -32,5 +32,9 @@ waiting for, so the page never breaks while assets are still coming in.
   colour, so they need transparent backgrounds.
 - The hero and CTA photos are `object-fit: cover`; keep the subject away from the
   left third of the hero, where the headline sits.
+- **The four particle cut-outs are not equal sizes in the design.** Iron is the
+  largest and sits highest; the other three are smaller and drop lower. The grid
+  reproduces that (`.particle--iron` is wider and lifted), so supply the iron
+  cut-out at a larger scale than the rest.
 - Prefer WebP around quality 80. If you only have JPG or PNG, either convert or
   change the `src` in `index.html` — the extension is not special-cased anywhere.
